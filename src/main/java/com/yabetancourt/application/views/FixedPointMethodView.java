@@ -1,4 +1,4 @@
-package com.yabetancourt.application.views.helloworld;
+package com.yabetancourt.application.views;
 
 import com.vaadin.flow.component.AbstractField;
 import com.vaadin.flow.component.Key;
