@@ -16,10 +16,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import groovy.util.Eval;
+import org.mariuszgromada.math.mxparser.Function;
 
 import java.util.Arrays;
-import java.util.function.Function;
 
 @PageTitle("Punto Fijo")
 @Route(value = "/")
@@ -94,27 +93,21 @@ public class FixedPointMethodView extends VerticalLayout {
         add(title, formLayout);
     }
 
-    public static Function<Double, Double> fromStringToFunction(String expression) {
-        return x -> (double) Eval.x(x, expression);
-    }
-
     private static double findRoot(double initialValue, double tolerance, int maxSteps, String expression) throws NotConvergentException {
         k = 0;
         double x1, x0 = initialValue;
         x1 = x0;
-
+        Function g = new Function("G(x) = " + expression);
         do {
             k++;
             x0 = x1;
-            x1 = fromStringToFunction(expression).apply(x1);
+            System.out.println(x0);
+            x1 = g.calculate(x1);
         } while (k <= maxSteps && Math.abs(x1 - x0) > tolerance);
 
-        if (k > maxSteps && Math.abs(x1 - x0) > tolerance) {
+        if (Double.isNaN(x1) || k > maxSteps && Math.abs(x1 - x0) > tolerance)
             throw new NotConvergentException();
-        }
-
         return x1;
-
     }
 
     private static boolean isAnyEmpty(AbstractField... components) {

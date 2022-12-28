@@ -137,11 +137,16 @@
             <scope>test</scope>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>org.codehaus.groovy</groupId>-->
+        <!--            <artifactId>groovy-all</artifactId>-->
+        <!--            <version>3.0.7</version>-->
+        <!--            <type>pom</type>-->
+        <!--        </dependency>-->
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>3.0.7</version>
-            <type>pom</type>
+            <groupId>org.mariuszgromada.math</groupId>
+            <artifactId>MathParser.org-mXparser</artifactId>
+            <version>5.1.0</version>
         </dependency>
 
     </dependencies>
