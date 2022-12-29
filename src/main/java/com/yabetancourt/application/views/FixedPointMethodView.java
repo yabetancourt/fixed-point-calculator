@@ -106,6 +106,7 @@ public class FixedPointMethodView extends VerticalLayout {
         } while (k <= maxSteps && Math.abs(x1 - x0) > tolerance);
 
         if (Double.isNaN(x1) || k > maxSteps && Math.abs(x1 - x0) > tolerance)
+
             throw new NotConvergentException();
         return x1;
     }
